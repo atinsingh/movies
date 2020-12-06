@@ -6,14 +6,20 @@ import javax.persistence.*;
 
 @Data
 @NoArgsConstructor
-@RequiredArgsConstructor
+//@RequiredArgsConstructor
 @Entity
-@Table(name = "table_user")
+@Table(name="table_user")
 public class User {
       @Id
       @GeneratedValue(strategy = GenerationType.AUTO)
-      @Column(name = "user_id")
+
       private Long userId;
+
+      public User(@NonNull String firstName, @NonNull String lastName, @NonNull String email) {
+            this.firstName = firstName;
+            this.lastName = lastName;
+            this.email = email;
+      }
 
       @Column(length = 255)
       @NonNull private String firstName;

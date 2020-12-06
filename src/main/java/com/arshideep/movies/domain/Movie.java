@@ -11,15 +11,22 @@ import javax.persistence.*;
 @Entity
 @Table
 @NoArgsConstructor
-@RequiredArgsConstructor
+//@RequiredArgsConstructor
 public class Movie {
+    public Movie(String movieName,  String movieLanguage, String genre, Integer duration) {
+        this.movieName = movieName;
+        this.movieLanguage = movieLanguage;
+        this.genre = genre;
+        this.duration = duration;
+    }
+
     //MovieId, Movie name, movie language, movie genre, duration.
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
-    @NonNull private String movieName;
-    @NonNull private String movieLanguage;
+     private String movieName;
+     private String movieLanguage;
     private String genre;
-    @NonNull private Integer duration;
+     private Integer duration;
 
 }
