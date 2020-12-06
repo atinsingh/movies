@@ -1,5 +1,6 @@
 package com.arshideep.movies.domain;
 
+
 import lombok.Data;
 import lombok.NoArgsConstructor;
 import lombok.NonNull;
