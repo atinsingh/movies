@@ -10,22 +10,28 @@ import javax.persistence.*;
 import java.util.Date;
 
 @Entity
-@Table
+@Table(name="table_order")
 @NoArgsConstructor
-@RequiredArgsConstructor
+
 @Data
 public class Order {
 
     @Id
-    @JsonProperty("order_id")
+
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
 
-    @OneToOne
-    @NonNull  private User user;
+    public Order( User user,Movie movie, Date orderDate) {
+        this.user = user;
+        this.movie = movie;
+        this.orderDate = orderDate;
+    }
 
     @OneToOne
-    @NonNull private Movie movie;
+    private User user;
+
+    @OneToOne
+    private Movie movie;
 
     private Date orderDate;
 
