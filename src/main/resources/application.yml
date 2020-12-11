@@ -1,5 +1,26 @@
 spring:
+<<<<<<< HEAD
   profiles:
     active: dev
 server:
   port: 8081
+=======
+  datasource:
+    data-username: sa
+    url: jdbc:h2:mem:appdb
+
+  h2:
+    console:
+      enabled: true
+      path: /h2-console
+  jpa:
+    hibernate:
+      ddl-auto:create
+    show-sql: true
+
+
+server:
+  port: 8081
+
+
+>>>>>>> 59679fc57c99ee3d4f41e18330fd259b3d627d23
