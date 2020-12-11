@@ -1,31 +1,37 @@
 package com.arshideep.movies.controller;
-
-import com.arshideep.movies.UserService;
 import com.arshideep.movies.domain.User;
-import org.springframework.http.MediaType;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RestController;
+import com.arshideep.movies.service.UserService;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
 @RestController
+@RequestMapping("/api/user")
 public class UserController {
-    private UserService service;
+   private UserService userService;
 
-
-    public UserController(UserService service) {
-        this.service = service;
+    public UserController(UserService userService) {
+        this.userService = userService;
     }
 
-    @PostMapping(value = "/user" , consumes = MediaType.APPLICATION_JSON_VALUE)
-    public User createUser(@RequestBody User user) {
-        return this.service.createUser(user);
+    public List<User> getAllUsers(){
+        return  userService.getAllUsers();
+    }
+    @GetMapping("/id")
+    public User getUserById(@PathVariable Long id){
+        return userService.getUserById(id);
     }
 
-    @GetMapping(value = "/user", produces = MediaType.APPLICATION_JSON_VALUE)
-    public List<User> getUsers() {
-        return this.service.getAllUsers();
+    @PostMapping
+    public User addUser(@RequestBody User user){
+        return userService.addUser(user);
     }
+
+    @PutMapping
+    public User updateUser(@RequestBody User user) { return userService.updateUser(user);}
+
+    @DeleteMapping
+    public void deleteUser(@RequestBody User user){ userService.deleteuser(user);}
+
+
 }
